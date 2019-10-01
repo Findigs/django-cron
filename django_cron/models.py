@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.postgres.fields import JSONField
 
 
 class CronJobLog(models.Model):
@@ -10,7 +11,7 @@ class CronJobLog(models.Model):
     start_time = models.DateTimeField(db_index=True)
     end_time = models.DateTimeField(db_index=True)
     is_success = models.BooleanField(default=False)
-    message = models.TextField(default='', blank=True)  # TODO: db_index=True
+    message = JSONField(null=True, blank=True)
 
     # This field is used to mark jobs executed in exact time.
     # Jobs that run every X minutes, have this field empty.

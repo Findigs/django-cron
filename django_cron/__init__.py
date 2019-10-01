@@ -161,6 +161,8 @@ class CronJobManager(object):
         cron_log.save()
 
     def make_log_msg(self, msg, *other_messages):
+        # TODO restructure this method
+        #   Need to get in position to accept as JSON payload
         MAX_MESSAGE_LENGTH = 1000
         if not other_messages:
             # assume that msg is a single string
